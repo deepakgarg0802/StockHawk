@@ -15,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -86,6 +87,13 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
               @Override public void onItemClick(View v, int position) {
                 //TODO:
                 // do something on item click
+                Intent intent = new Intent(v.getContext(),LineGraph.class);
+                  mCursor = mCursorAdapter.getCursor();
+                  mCursor.moveToPosition(position);
+                  String symbol = mCursor.getString(mCursor.getColumnIndex("symbol"));
+                  intent.putExtra("symbol", symbol);
+                  Log.v("debug",symbol);
+                  startActivity(intent);
               }
             }));
     recyclerView.setAdapter(mCursorAdapter);
