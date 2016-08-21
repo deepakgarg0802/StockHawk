@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/detail_activity_heading"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/textView" />
 
     <com.db.chart.view.LineChartView
         xmlns:chart="http://schemas.android.com/apk/res-auto"
         android:id="@+id/linechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/content_description_chart"/>
+        android:contentDescription="@string/content_description_chart"
+        android:padding="5dp"/>
 
-</FrameLayout>
+</LinearLayout>

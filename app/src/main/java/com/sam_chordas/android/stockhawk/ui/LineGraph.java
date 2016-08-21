@@ -2,13 +2,15 @@ package com.sam_chordas.android.stockhawk.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.net.Uri;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.db.chart.model.LineSet;
+import com.db.chart.view.ChartView;
 import com.db.chart.view.LineChartView;
 import com.sam_chordas.android.stockhawk.R;
 
@@ -24,21 +26,25 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
-public class LineGraph extends Activity {
+public class LineGraph extends AppCompatActivity {
 
     LineSet mlineSet;
     String mSymbol;
     int result_count=0;
     LineChartView chartView;
-    int num_of_days= -15;
+
+    ArrayList<Float> prices;
+    ArrayList<String>dates;
+    public static int NUM_OF_DAYS = -7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_graph);
-
         chartView= ((LineChartView)findViewById(R.id.linechart));
         mlineSet= new LineSet();
 
@@ -52,7 +58,7 @@ public class LineGraph extends Activity {
         } else {
             mSymbol= (String) savedInstanceState.getSerializable("symbol");
         }
-
+        setTitle(mSymbol);
         new FetchGraphData().execute(mSymbol);
     }
 
@@ -83,12 +89,18 @@ public class LineGraph extends Activity {
             JSONObject results= query.getJSONObject(RESULTS_JSON);
             JSONArray quotes= results.getJSONArray(QUOTE_JSON);
 
+            dates=new ArrayList<>();
+            prices=new ArrayList<>();
             for(int i=0;i<result_count;++i)
             {
                 JSONObject day_entry= quotes.getJSONObject(i);
                 String date_entry = day_entry.getString(DATE_JSON);
                 float price= Float.parseFloat(day_entry.getString(CLOSE_JSON));
-                mlineSet.addPoint(date_entry,price);
+
+                date_entry=date_entry.substring(5);//to keep day,month only
+                //mlineSet.addPoint(date_entry,price);\
+                prices.add(price);
+                dates.add(date_entry);
             }
         }
 
@@ -183,7 +195,7 @@ public class LineGraph extends Activity {
             Calendar start_date,end_date;
             start_date= Calendar.getInstance();
             end_date= Calendar.getInstance();
-            start_date.add(Calendar.DATE,num_of_days);
+            start_date.add(Calendar.DATE, NUM_OF_DAYS);
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
 
             mDateStart= s.format(new Date(start_date.getTimeInMillis()));
@@ -194,10 +206,29 @@ public class LineGraph extends Activity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            chartView.addData(mlineSet);
-            chartView.show();
-            if(pd!=null)
-            {
+
+            if(dates!=null && prices!= null) {
+
+                for (int i = 0; i < dates.size() && i < prices.size(); i++) {
+                    mlineSet.addPoint(dates.get(i), prices.get(i));
+                    Log.v("date", dates.get(i));
+                }
+                int min = Math.round(Collections.min(prices));
+                int max = Math.round(Collections.max(prices));
+                min = min - 2;
+                max = max + 2;
+                Log.v("price", min + " " + max);
+
+                chartView.setAxisBorderValues(min, max);
+                chartView.setGrid(ChartView.GridType.FULL, new Paint());
+                chartView.addData(mlineSet);
+                chartView.show();
+            }
+            else {
+                Toast.makeText(LineGraph.this,getString(R.string.network_toast),Toast.LENGTH_LONG).show();
+            }
+
+            if (pd != null) {
                 pd.dismiss();
             }
         }
