@@ -1,9 +1,16 @@
 package com.sam_chordas.android.stockhawk.rest;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentProviderOperation;
+import android.content.Context;
 import android.util.Log;
+
+import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.widget.StockWidgetProvider;
+
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -92,4 +99,11 @@ public class Utils {
     }
     return builder.build();
   }
+    //-----------------change----------------------
+    public static void updateWidgets(Context context){
+            AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
+            ComponentName component = new ComponentName(context, StockWidgetProvider.class);
+            int[] widgetIds = widgetManager.getAppWidgetIds(component);
+            widgetManager.notifyAppWidgetViewDataChanged(widgetIds, R.id.widget_list);
+          }
 }

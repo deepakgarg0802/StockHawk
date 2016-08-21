@@ -33,6 +33,7 @@ public class LineGraph extends Activity {
     String mSymbol;
     int result_count=0;
     LineChartView chartView;
+    int num_of_days= -15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -182,7 +183,7 @@ public class LineGraph extends Activity {
             Calendar start_date,end_date;
             start_date= Calendar.getInstance();
             end_date= Calendar.getInstance();
-            start_date.add(Calendar.DATE,-25);
+            start_date.add(Calendar.DATE,num_of_days);
             SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
 
             mDateStart= s.format(new Date(start_date.getTimeInMillis()));
