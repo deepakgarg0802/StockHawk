@@ -8,6 +8,6 @@
         android:id="@+id/linechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="chart showing prices over time"/>
+        android:contentDescription="@string/content_description_chart"/>
 
 </FrameLayout>
