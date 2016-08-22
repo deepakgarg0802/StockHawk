@@ -19,4 +19,5 @@
     <string name="content_description_ticker" translatable="false">ticker</string>
     <string name="invalid_stock">Error, symbol Not found</string>
     <string name="detail_activity_heading">Graph of Price over last 7 days</string>
+    <string name="duplicate_stock">This stock is already saved</string>
 </resources>
