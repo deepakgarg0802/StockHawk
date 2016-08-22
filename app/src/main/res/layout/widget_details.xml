@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_name"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/ic_attach_money_white_24dp"
             />
     </FrameLayout>
 
