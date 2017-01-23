@@ -7,22 +7,22 @@ An Android app for monitoring stocks. This project is under Udacity Android Nano
 
 ## User Feedback for Stock Hawk:
 Hellen says:
-> "Right now I can't use this app with my screen reader. My friends love it, so I would love to download it, but the buttons don't tell my screen reader what they do."
+<blockquote> "Right now I can't use this app with my screen reader. My friends love it, so I would love to download it, but the buttons don't tell my screen reader what they do." </blockquote>
 
 Your boss says:
-> "We need to prepare Stock Hawk for the Egypt release. Make sure our translators know what to change and make sure the Arabic script will format nicely."
+<blockquote> "We need to prepare Stock Hawk for the Egypt release. Make sure our translators know what to change and make sure the Arabic script will format nicely." </blockquote>
 
 Adebowale says:
-> "Stock Hawk allows me to track the current price of stocks, but to track their prices over time, I need to use an external program. It would be wonderful if you could show more detail on a stock, including its price over time."
+<blockquote> "Stock Hawk allows me to track the current price of stocks, but to track their prices over time, I need to use an external program. It would be wonderful if you could show more detail on a stock, including its price over time." </blockquote>
 
 Gundega says:
-> "I use a lot of widgets on my Android device, and I would love to have a widget that displays my stock quotes on my home screen."
+<blockquote> "I use a lot of widgets on my Android device, and I would love to have a widget that displays my stock quotes on my home screen." </blockquote>
 
 Jamal says:
-> "I found a bug in your app. Right now when I search for a stock quote that doesn't exist, the app crashes."
+<blockquote> "I found a bug in your app. Right now when I search for a stock quote that doesn't exist, the app crashes." </blockquote>
 
 Xaio-lu says:
-> "When I opened this app for the first time without a network connection, it was a confusing blank screen. I would love a message that tells me why the screen is blank or whether my stock quotes are out of date."
+<blockquote> "When I opened this app for the first time without a network connection, it was a confusing blank screen. I would love a message that tells me why the screen is blank or whether my stock quotes are out of date." </blockquote>
 
 ## Required Components
 
@@ -36,4 +36,4 @@ Xaio-lu says:
 * App conforms to common standards found in the Android Nanodegree General Project Guidelines
 
 ## Verdict
-**__Met Specifications__**
+**Met Specifications**
