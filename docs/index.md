@@ -1,6 +1,10 @@
 # Stockhawk (Project 3) 
 An Android app for monitoring stocks. This project is under Udacity Android Nanodegree Program.
 
+## Run the app
+
+<iframe src="https://appetize.io/embed/nh0rb2czmedaaw0nt0qaugvu8c?device=iphone5s&scale=50&autoplay=false&orientation=portrait&deviceColor=black" width="378px" height="400px" frameborder="0" scrolling="no"></iframe>
+
 ## User Feedback for Stock Hawk:
 Hellen says:
 > "Right now I can't use this app with my screen reader. My friends love it, so I would love to download it, but the buttons don't tell my screen reader what they do."
@@ -32,4 +36,4 @@ Xaio-lu says:
 * App conforms to common standards found in the Android Nanodegree General Project Guidelines
 
 ## Verdict
-**__ Met Specifications __**
+**__Met Specifications__**
